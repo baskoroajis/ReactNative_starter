@@ -118,16 +118,47 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-
+import  {createStackNavigator, createAppContainer} from 'react-navigation';
+import SearchPage from './SearchPage'
 //const instructions = Platform.select();
 
 type Props = {};
-export default class App extends Component<Props>{
+// class SearchPage extends Component<Props>{
 
-	render(){
-		return React.createElement(Text, {style : styles.description}, "Search for house to buy");
-	}
-};
+// 	static navigationOptions = {
+// 		title: "property finder",
+// 	};
+// 	render(){
+// 		return <Text style={styles.description}> Search for House to buy three</Text>;
+// 		/*
+// 		// return React.createElement(Text, {style : styles.description}, "Search for house to buy");*/
+// 	}
+// };
+
+const RootStack = createStackNavigator({
+  // For each screen that you can navigate to, create a new entry like this:
+  // Profile: {
+  //   // `ProfileScreen` is a React component that will be the main content of the screen.
+  //   screen: SearchPage,
+  //   // When `ProfileScreen` is loaded by the StackNavigator, it will be given a `navigation` prop.
+
+  //   // Optional: When deep linking or using react-navigation in a web app, this path is used:
+  //   path: 'people/:name',
+  //   // The action and route params are extracted from the path.
+
+  //   // // Optional: Override the `navigationOptions` for the screen
+  //   // navigationOptions: ({ navigation }) => ({
+  //   //   title: `${navigation.state.params.name}'s Profile'`,
+  //   // }),
+  // },
+
+  Home : {screen: SearchPage,},
+
+  // ...MyOtherRoutes,
+});
+
+const App = createAppContainer(RootStack);
+export default App;
 
 const styles = StyleSheet.create({
 	description :{
@@ -136,4 +167,7 @@ const styles = StyleSheet.create({
 		color : '#656565',
 		marginTop : 65
 	},
+
 });
+
+
